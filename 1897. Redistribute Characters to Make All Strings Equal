@@ -1,0 +1,11 @@
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        worddict = defaultdict(int)
+
+        for word in words:
+            for c in word:
+                worddict[c] += 1
+        for c in worddict:
+            if worddict[c] % len(words):
+                return False
+        return True
