@@ -1,0 +1,10 @@
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        res = 0
+        kval = tickets[k]
+        for i, val in enumerate(tickets):
+            if i <= k :
+               res += min(val, kval)
+            else:
+                res += min(val, kval-1)
+        return res
