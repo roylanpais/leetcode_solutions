@@ -1,0 +1,12 @@
+class Solution:
+    def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
+        result = len(students)
+        stcount = Counter(students)
+
+        for s in sandwiches:
+            if s in stcount and stcount[s]>0:
+                stcount[s] -= 1
+                result -= 1
+            else:
+                return result
+        return result
