@@ -1,0 +1,19 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        cdict = defaultdict(set)
+        rdict = defaultdict(set)
+        bdict = defaultdict(set)
+
+        for ri, rv in enumerate(board):
+            for ci, cv in enumerate(rv):
+                if cv == ".":
+                    continue
+                if (cv in cdict[ci]) or \
+                (cv in rdict[ri]) or \
+                (cv in bdict[(ci//3, ri//3)]):
+                    return False
+                cdict[ci].add(cv)
+                rdict[ri].add(cv)
+                bdict[(ci//3, ri//3)].add(cv)
+
+        return True
