@@ -1,0 +1,12 @@
+class Solution:
+    def maxDifference(self, s: str) -> int:
+        
+        scounts = Counter(s)
+        maxodd = 0
+        mineven = len(s)
+        for num in scounts.values():
+            if num % 2 == 0:
+                mineven = min(mineven, num)
+            else:
+                maxodd = max(maxodd,num)
+        return maxodd - mineven
