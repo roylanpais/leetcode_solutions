@@ -1,0 +1,18 @@
+class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid)
+        gcount = {}
+        repeat = missing = 0
+        for i in grid:
+            for j in i:
+                if j not in gcount:
+                    gcount[j] = 0
+                gcount[j]+=1
+        
+        for i in range(1, n * n + 1):
+
+            if i not in gcount:
+                missing = i
+            elif gcount[i] > 1 :
+                repeat = i
+        return [repeat, missing]
